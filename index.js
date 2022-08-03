@@ -1,11 +1,15 @@
-const cors = require("cors");
-const express = require("express");
-const mongoose = require("mongoose");
-const app = express();
-require("dotenv").config();
+const cors = require("cors")
+const express = require("express")
+const mongoose = require("mongoose")
+const cookieParser = require("cookie-parser")
+require("dotenv").config()
 
-app.use(express.json());
-app.use(cors());
+const app = express()
+
+app.use(express.json())
+app.use(cookieParser())
+app.use(cors())
+
 
 app.use(require("./routes"));
 
