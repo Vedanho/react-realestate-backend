@@ -44,7 +44,7 @@ module.exports.apartmentController = {
   },
   getApartment: async (req, res) => {
     try {
-      const apartments = await Apartment.find().populate("user");
+      const apartments = await Apartment.find();
 
       return res.json(apartments)
     } catch (error) {
