@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 require("dotenv").config()
+const errorMiddleware = require("./middlewares/error.middleware")
 
 const app = express()
 
@@ -11,6 +12,7 @@ app.use(cookieParser())
 app.use(cors())
 
 app.use(require("./routes/user.route"))
+app.use(errorMiddleware)
 
 mongoose
   .connect(process.env.MONGO_SERVER)
