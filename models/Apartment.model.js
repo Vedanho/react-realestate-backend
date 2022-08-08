@@ -20,20 +20,19 @@ const apartmentSchema = mongoose.Schema({
       },
     },
   ],
-  realtor: [
-    {
-      ref: "Realtor",
-      type: mongoose.SchemaTypes.ObjectId,
-    },
-  ],
+  realtor: {
+    ref: "Realtor",
+    type: mongoose.SchemaTypes.ObjectId,
+  },
+
   status: {
     type: String,
-    enum: ["Rent", "Sale"]
-  }, 
+    enum: ["Rent", "Sale"],
+  },
   house: {
-    floor: Number, 
+    floor: Number,
     gym: Boolean,
-  }
+  },
 });
 
 const Apartment = mongoose.model("Apartment", apartmentSchema);
