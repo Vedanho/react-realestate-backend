@@ -1,13 +1,19 @@
 const cors = require("cors")
 const express = require("express")
 const mongoose = require("mongoose")
-const app = express()
+const cookieParser = require("cookie-parser")
 require("dotenv").config()
+const errorMiddleware = require("./middlewares/error.middleware")
+
+const app = express()
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors())
 
-app.use(require("./routes/index"))
+app.use(require("./routes/user.route"))
+app.use(errorMiddleware)
+// app.use(require("./routes/index"))
 
 mongoose
   .connect(process.env.MONGO_SERVER)
