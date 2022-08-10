@@ -15,6 +15,6 @@ router.post("/login", userController.userLogin)
 router.post("/logout", userController.userLogout)
 router.get("/activate/:link", userController.tokenActivate)
 router.get("/refresh", userController.tokenRefresh)
-router.get("/users", authMiddleware, userController.getUsers)
+router.get("/users", userController.getUsers)
 
 module.exports = router
