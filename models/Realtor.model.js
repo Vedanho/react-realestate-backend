@@ -8,8 +8,8 @@ const realtorSchema = mongoose.Schema({
     {
       rate: Number,
       user: {
-        type: mongoose.SchemaTypes.ObjectId,
         ref: "User",
+        type: mongoose.SchemaTypes.ObjectId,
       },
     },
   ],
@@ -17,8 +17,8 @@ const realtorSchema = mongoose.Schema({
     {
       review: String,
       user: {
-        type: mongoose.SchemaTypes.ObjectId,
         ref: "User",
+        type: mongoose.SchemaTypes.ObjectId,
       },
     },
   ],

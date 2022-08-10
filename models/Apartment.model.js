@@ -4,7 +4,7 @@ const apartmentSchema = mongoose.Schema({
   price: Number,
   location: String,
   description: String,
-  image: String,
+  image: [],
   yearOfBuilt: Date,
   size: Number,
   dateOfDownload: Date,

@@ -17,7 +17,7 @@ module.exports.apartmentController = {
         reviews,
         realtor,
         status,
-        house
+        house,
       } = req.body;
 
       const apartment = await Apartment.create({
@@ -34,7 +34,7 @@ module.exports.apartmentController = {
         reviews,
         realtor,
         status,
-        house
+        house,
       });
 
       return res.json(apartment);
@@ -44,9 +44,11 @@ module.exports.apartmentController = {
   },
   getApartment: async (req, res) => {
     try {
-      const apartments = await Apartment.find();
+      const apartments = await Apartment.find()
+        .populate("realtor")
+        .populate({ path: "reviews.user" });
 
-      return res.json(apartments)
+      return res.json(apartments);
     } catch (error) {
       return res.status(401).json(error.message);
     }
@@ -54,6 +56,7 @@ module.exports.apartmentController = {
   updateApartment: async (req, res) => {
     try {
       const {
+        name,
         price,
         location,
         description,
@@ -68,11 +71,13 @@ module.exports.apartmentController = {
         reviews,
         realtor,
         status,
-        house
+        house,
+        geolocation,
       } = req.body;
       const newApartmnet = await Apartment.findByIdAndUpdate(
         req.params.id,
         {
+          name,
           price,
           location,
           description,
@@ -89,7 +94,8 @@ module.exports.apartmentController = {
           realtor,
           status,
           house,
-          dateOfDownload
+          dateOfDownload,
+          geolocation,
         },
         { new: true }
       );
@@ -100,8 +106,15 @@ module.exports.apartmentController = {
     }
   },
   deleteApartment: async (req, res) => {
-   await Apartment.findByIdAndRemove(req.params.id);
+    await Apartment.findByIdAndRemove(req.params.id);
 
     return res.json("Квартира удалена");
+  },
+  getApartmentById: async (req, res) => {
+    const apartment = await Apartment.findById(req.params.id)
+      .populate("realtor")
+      .populate({ path: "reviews.user" });
+
+    return res.json(apartment);
   },
 };
