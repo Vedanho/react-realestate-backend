@@ -13,7 +13,7 @@ app.use(cors())
 
 app.use(require("./routes/user.route"))
 app.use(errorMiddleware)
-// app.use(require("./routes/index"))
+app.use(require("./routes/index"))
 
 mongoose
   .connect(process.env.MONGO_SERVER)

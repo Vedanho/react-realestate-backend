@@ -7,5 +7,6 @@ router.post("/apartment", apartmentController.createApartment);
 router.get("/apartment", apartmentController.getApartment);
 router.patch("/apartment/:id", apartmentController.updateApartment);
 router.delete("/apartment/:id", apartmentController.deleteApartment);
+router.get("/apartment/:id", apartmentController.getApartmentById);
 
-module.exports = router
+module.exports = router;

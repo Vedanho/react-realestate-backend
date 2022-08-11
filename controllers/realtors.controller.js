@@ -3,7 +3,7 @@ const Realtor = require("../models/Realtor.model");
 module.exports.realtorController = {
   getRealtors: async (req, res) => {
     try {
-      const realtors = await Realtor.find().populate("user");
+      const realtors = await Realtor.find().populate({path: "reviews.user"});
       res.json(realtors);
     } catch (e) {
       res.json({ error: e.message });
