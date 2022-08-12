@@ -11,6 +11,7 @@ const apartmentSchema = mongoose.Schema({
   garage: Number,
   bathroom: Number,
   bedroom: Number,
+  city: String,
   reviews: [
     {
       text: String,
