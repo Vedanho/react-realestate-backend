@@ -20,6 +20,9 @@ const userSchema = mongoose.Schema({
     default: false,
   },
   activationLink: String,
+  avatar: String,
+  lastname: String,
+  phone: String,
 })
 
 const User = mongoose.model("User", userSchema)
