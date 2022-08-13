@@ -66,7 +66,7 @@ module.exports.realtorController = {
   },
   getRealtorById: async (req, res) => {
     try {
-      const realtors = await Realtor.find(req.params.id).populate("user");
+      const realtors = await Realtor.find(req.params.id).populate({path: "reviews.user"});
       res.json(realtors);
     } catch (error) {
       return res.status(401).json(error.toString());
