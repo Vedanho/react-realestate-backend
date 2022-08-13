@@ -106,7 +106,11 @@ module.exports.realtorController = {
         { new: true }
       );
 
-      return res.json(comment);
+      const realtors = await Realtor.find().populate({ path: "reviews.user" });
+      
+    
+
+      return res.json(realtors);
     } catch (error) {
       return res.status(401).json(error.toString());
     }
