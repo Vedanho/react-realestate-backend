@@ -20,6 +20,9 @@ mongoose
   .then(() => console.log("Успешно соединились с сервером MongoDB"))
   .catch(() => console.log("Ошибка при соединении с сервером MongoDB"))
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT), () => {
   console.log(`Example app listening at http://localhost:${process.env.PORT}`)
-})
+}
+
+
+console.log(process.env.PORT)
