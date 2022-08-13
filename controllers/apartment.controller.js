@@ -4,8 +4,10 @@ module.exports.apartmentController = {
   createApartment: async (req, res) => {
     try {
       const {
+        name,
         price,
         location,
+        city,
         description,
         image,
         yearOfBuilt,
@@ -21,8 +23,10 @@ module.exports.apartmentController = {
       } = req.body;
 
       const apartment = await Apartment.create({
+        name,
         price,
         location,
+        city,
         description,
         image,
         yearOfBuilt,
@@ -59,6 +63,7 @@ module.exports.apartmentController = {
         name,
         price,
         location,
+        city,
         description,
         image,
         yearOfBuilt,
@@ -80,6 +85,7 @@ module.exports.apartmentController = {
           name,
           price,
           location,
+          city,
           description,
           image,
           yearOfBuilt,
