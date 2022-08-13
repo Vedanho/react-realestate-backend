@@ -10,7 +10,7 @@ router.post("/realtors", realtorController.createRealtors);
 router.patch("/realtors/:id", realtorController.updateRealtor);
 router.delete("/realtors/:id", realtorController.deleteRealtor);
 router.get("/realtors/:id", realtorController.getRealtorById);
-router.patch("/realtors/rating/:id", realtorController.setRating);
+router.patch("/realtors/rating/:id", authMiddleware, realtorController.setRating);
 router.patch("/realtors/review/:id", authMiddleware, realtorController.addComment);
 
 module.exports = router;
