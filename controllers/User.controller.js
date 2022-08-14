@@ -2,6 +2,7 @@ const userService = require("../service/user.service")
 
 const { validationResult } = require("express-validator")
 const ApiError = require("../exceptions/api.error")
+const User = require("../models/User.model")
 
 module.exports.userController = {
   userRegistration: async (req, res, next) => {
@@ -81,6 +82,49 @@ module.exports.userController = {
       return res.json(users)
     } catch (e) {
       next(e)
+    }
+  },
+
+  getUserById: async (req, res, next) => {
+    try {
+      const user = await userService.getUserById()
+      return res.json(user)
+    } catch (e) {
+      next(e)
+    }
+  },
+
+  addFavorite: async (req, res) => {
+    try {
+      const users = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          $push: {
+            favorite: req.body.favorite,
+          },
+        },
+        { new: true }
+      )
+      res.json(users)
+    } catch (e) {
+      return res.status(401).json({ error: "Ошибка при запросе на изменение" })
+    }
+  },
+
+  remFavorite: async (req, res) => {
+    try {
+      const users = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          $pull: {
+            favorite: req.body.favorite,
+          },
+        },
+        { new: true }
+      )
+      res.json(users)
+    } catch (e) {
+      return res.status(401).json({ error: "Ошибка при запросе на изменение" })
     }
   },
 }
