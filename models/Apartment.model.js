@@ -16,7 +16,9 @@ const apartmentSchema = mongoose.Schema({
   city: String,
   reviews: [
     {
-      text: String,
+      review: String,
+      advantages: String,
+      disadvantages: String,
       user: {
         ref: "User",
         type: mongoose.SchemaTypes.ObjectId,
