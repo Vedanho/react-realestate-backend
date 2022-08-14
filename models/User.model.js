@@ -21,8 +21,15 @@ const userSchema = mongoose.Schema({
   },
   activationLink: String,
   avatar: String,
+  firstname: String,
   lastname: String,
   phone: String,
+  favorite: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Apartment",
+    },
+  ],
 })
 
 const User = mongoose.model("User", userSchema)
