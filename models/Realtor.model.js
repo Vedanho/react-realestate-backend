@@ -16,6 +16,8 @@ const realtorSchema = mongoose.Schema({
   reviews: [
     {
       review: String,
+      advantages: String,
+      disadvantages: String,
       user: {
         ref: "User",
         type: mongoose.SchemaTypes.ObjectId,

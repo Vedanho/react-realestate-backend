@@ -1,19 +1,24 @@
 const mongoose = require("mongoose");
 
 const apartmentSchema = mongoose.Schema({
+  name: String,
   price: Number,
   location: String,
+  city: String,
   description: String,
   image: [],
-  yearOfBuilt: Date,
+  yearOfBuilt: String,
   size: Number,
-  dateOfDownload: Date,
+  dateOfDownload: String,
   garage: Number,
   bathroom: Number,
   bedroom: Number,
+  city: String,
   reviews: [
     {
-      text: String,
+      review: String,
+      advantages: String,
+      disadvantages: String,
       user: {
         ref: "User",
         type: mongoose.SchemaTypes.ObjectId,

@@ -4,8 +4,10 @@ module.exports.apartmentController = {
   createApartment: async (req, res) => {
     try {
       const {
+        name,
         price,
         location,
+        city,
         description,
         image,
         yearOfBuilt,
@@ -21,8 +23,10 @@ module.exports.apartmentController = {
       } = req.body;
 
       const apartment = await Apartment.create({
+        name,
         price,
         location,
+        city,
         description,
         image,
         yearOfBuilt,
@@ -59,6 +63,7 @@ module.exports.apartmentController = {
         name,
         price,
         location,
+        city,
         description,
         image,
         yearOfBuilt,
@@ -80,6 +85,7 @@ module.exports.apartmentController = {
           name,
           price,
           location,
+          city,
           description,
           image,
           yearOfBuilt,
@@ -116,5 +122,31 @@ module.exports.apartmentController = {
       .populate({ path: "reviews.user" });
 
     return res.json(apartment);
+  },
+  addComment: async (req, res) => {
+    try {
+      const apartment = await Apartment.findByIdAndUpdate(
+        req.params.id,
+        {
+          $push: {
+            reviews: {
+              review: req.body.review,
+              advantages: req.body.advantages,
+              disadvantages: req.body.disadvantages,
+              user: req.body.user,
+            },
+          },
+        },
+        { new: true }
+      );
+
+      // const apartments = await Apartment.find().populate({
+      //   path: "reviews.user",
+      // });
+
+      return res.json(apartment);
+    } catch (error) {
+      return res.status(401).json(error.toString());
+    }
   },
 };
