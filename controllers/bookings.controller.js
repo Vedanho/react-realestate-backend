@@ -4,9 +4,9 @@ module.exports.bookingController = {
   getBookings: async (req, res) => {
     try {
       const bookings = await Booking.find()
-        .populate({ path: "booking.user" })
-        .populate({ path: "booking.realtor" })
-        .populate({ path: "booking.apartment" });
+        .populate("user")
+        .populate("realtor")
+        .populate("apartment");
       res.json(bookings);
     } catch (e) {
       res.json({ error: e.message });
