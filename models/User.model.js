@@ -21,12 +21,19 @@ const userSchema = mongoose.Schema({
   },
   activationLink: String,
   avatar: String,
+  firstname: String,
   lastname: String,
   phone: String,
   role: {
     type: String, 
     default: "user",
   }
+  favorite: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Apartment",
+    },
+  ],
 })
 
 const User = mongoose.model("User", userSchema)
