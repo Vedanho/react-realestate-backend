@@ -127,4 +127,19 @@ module.exports.userController = {
       return res.status(401).json({ error: "Ошибка при запросе на изменение" })
     }
   },
+
+  changeFirstName: async (req, res) => {
+    try {
+      const users = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          firstname: rea.body.firstname,
+        },
+        { new: true }
+      )
+      res.json(users)
+    } catch (e) {
+      return res.status(401).json({ error: "Ошибка при запросе на изменение" })
+    }
+  },
 }
