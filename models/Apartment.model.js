@@ -30,10 +30,7 @@ const apartmentSchema = mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
   },
 
-  status: {
-    type: String,
-    enum: ["Rent", "Sale"],
-  },
+  status: String,
   house: {
     floor: Number,
     gym: Boolean,
