@@ -99,7 +99,7 @@ class UserService {
     return users
   }
   async getUserById() {
-    const user = await UserModel.findById(userData.id)
+    const user = await UserModel.findById()
     return user
   }
 }

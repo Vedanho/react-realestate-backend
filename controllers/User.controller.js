@@ -87,12 +87,21 @@ module.exports.userController = {
 
   getUserById: async (req, res, next) => {
     try {
-      const user = await userService.getUserById()
+      const user = await userService.getUserById(req.params.id)
       return res.json(user)
     } catch (e) {
       next(e)
     }
   },
+  getUserByIdForCabinet: async (req, res, next) => {
+    try {
+      const user = await User.findById(req.params.id)
+      return res.json(user)
+    } catch (e) {
+      return res.status(401).json({ error: "Ошибка при запросе на изменение" })
+    }
+  },
+
 
   addFavorite: async (req, res) => {
     try {
