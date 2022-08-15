@@ -10,8 +10,8 @@ module.exports.userController = {
       if (!errors.isEmpty()) {
         return next(ApiError.BadRequest("Ошибка при валидации", errors.array()))
       }
-      const { login, email, password } = req.body
-      const userData = await userService.registration(login, email, password)
+      const { login, email, password, role } = req.body
+      const userData = await userService.registration(login, email, password,role)
 
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,

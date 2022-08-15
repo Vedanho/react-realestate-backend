@@ -23,6 +23,10 @@ const userSchema = mongoose.Schema({
   avatar: String,
   lastname: String,
   phone: String,
+  role: {
+    type: String, 
+    default: "user",
+  }
 })
 
 const User = mongoose.model("User", userSchema)
