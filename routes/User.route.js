@@ -15,11 +15,10 @@ router.post("/login", userController.userLogin)
 router.post("/logout", userController.userLogout)
 router.get("/activate/:link", userController.tokenActivate)
 router.get("/refresh", userController.tokenRefresh)
-router.get("/users", authMiddleware, userController.getUsers);
+router.get("/users",  userController.getUsers);
 router.get("/users/review", userController.getUsers)
-router.get("/user/:id", userController.getUserById)
+router.get("/user/:id", userController.getUserByIdForCabinet)
 router.patch("/users/:id/favorite", userController.addFavorite)
 router.patch("/users/:id/favorite/remove", userController.remFavorite)
-);
 
 module.exports = router;
