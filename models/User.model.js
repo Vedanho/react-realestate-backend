@@ -24,6 +24,10 @@ const userSchema = mongoose.Schema({
   firstname: String,
   lastname: String,
   phone: String,
+  role: {
+    type: String, 
+    default: "user",
+  }
   favorite: [
     {
       type: mongoose.SchemaTypes.ObjectId,
