@@ -13,5 +13,5 @@ router.patch("/apartment/review/:id",authMiddleware , apartmentController.addCom
 
 module.exports = router;
 
-
+console.log(1);
 //Изменил название файла
