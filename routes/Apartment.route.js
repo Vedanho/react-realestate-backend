@@ -12,3 +12,6 @@ router.get("/apartment/:id", apartmentController.getApartmentById);
 router.patch("/apartment/review/:id",authMiddleware , apartmentController.addComment);
 
 module.exports = router;
+
+
+//Изменил название файла
